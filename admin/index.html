@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khaliji Shop — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loginView" class="wrap login-wrap">
+  <div class="login-card">
+    <p class="eyebrow">Khaliji Shop</p>
+    <h1>Panel Admin</h1>
+    <p class="sub">Masuk untuk mengelola postingan jualan.</p>
+    <form id="loginForm">
+      <label>Email
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </label>
+      <label>Kata Sandi
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn-primary">Masuk</button>
+      <p id="loginError" class="error-msg"></p>
+    </form>
+  </div>
+</div>
+
+<div id="dashboardView" class="wrap hidden">
+  <header class="admin-header">
+    <div>
+      <p class="eyebrow">Khaliji Shop</p>
+      <h1>Panel Admin</h1>
+    </div>
+    <button id="logoutBtn" class="btn-ghost">Keluar</button>
+  </header>
+
+  <section class="card status-card">
+    <div>
+      <h2>Status Toko</h2>
+      <p class="sub" id="statusText">Memuat status...</p>
+    </div>
+    <button id="toggleStatusBtn" class="btn-secondary">Memuat...</button>
+  </section>
+
+  <section class="card">
+    <h2 id="formTitle">Tambah Postingan</h2>
+    <form id="productForm">
+      <input type="hidden" id="productId">
+      <label>Kategori
+        <select id="productCategory" required>
+          <option value="Tas">Tas</option>
+          <option value="Baju">Baju</option>
+          <option value="Celana">Celana</option>
+          <option value="Jaket">Jaket</option>
+        </select>
+      </label>
+      <label>Judul Postingan
+        <input type="text" id="productTitle" placeholder="Contoh: Tas Selempang Rajut Cream" required>
+      </label>
+      <label>Harga (Rp)
+        <input type="number" id="productPrice" placeholder="Contoh: 85000" required min="0">
+      </label>
+      <label>Link Gambar (opsional)
+        <input type="url" id="productImage" placeholder="https://...">
+      </label>
+      <label>Deskripsi / Keterangan
+        <textarea id="productDesc" rows="4" placeholder="Bahan, ukuran, warna, kondisi, dll." required></textarea>
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn-primary" id="submitBtn">Posting</button>
+        <button type="button" class="btn-ghost hidden" id="cancelEditBtn">Batal Edit</button>
+      </div>
+      <p id="formMsg" class="success-msg"></p>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Daftar Postingan</h2>
+    <div id="productList" class="admin-product-list">
+      <p class="sub">Memuat postingan...</p>
+    </div>
+  </section>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
